@@ -51,7 +51,6 @@ Inference:
 # Project structure
 ```
 .
-.
 ├── app/
 │   ├── static/                 # CSS/JS assets for Flask
 │   ├── templates/              # HTML templates (index.html)

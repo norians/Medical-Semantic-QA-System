@@ -1,11 +1,12 @@
-# Overview
+# Medical Semantic QA System (Python)
+## Overview
 This project implements a semantic retrieval-based medical question-answering system. It maps user queries to clinical answers by measuring proximity in a high-dimensional embedding space.
 
 Rather than relying on generative models, the system encodes medical questions into vector representations and retrieves the closest matching answer from a curated dataset. This approach prioritizes interpretability, robustness, and controlled outputs, which are especially important in medical domains.
 
 The project covers the full pipeline from data preprocessing and exploratory analysis to model fine-tuning and API deployment.
 
-# Key features
+## Key features
 - Deterministic Retrieval Pipeline, ensuring all answers originate from verified clinical sources
 - Semantic Question Answering based on sentence embeddings over a curated medical QA dataset
 - Fine-tuned Transformer Model trained with triplet loss for improved semantic alignment
@@ -13,7 +14,7 @@ The project covers the full pipeline from data preprocessing and exploratory ana
 - Clear Architectural Separation between data preprocessing (ETL), model training, and inference
 - Lightweight Flask API for serving predictions in a production-ready setup
 
-# Data processing
+## Data processing
 The system uses a curated medical question–answer dataset in XML format.
 
 Processing steps include:
@@ -24,7 +25,7 @@ Processing steps include:
 
 The resulting dataset is used both for model fine-tuning and inference-time retrieval.
 
-# Model approach
+## Model approach
 Base model: all-MiniLM-L6-v2 (Sentence Transformers)
 
 Fine-tuning strategy: 
@@ -48,7 +49,7 @@ Inference:
 - Compute cosine similarity against precomputed answer embeddings
 - Return the highest-scoring answer
 
-# Project structure
+## Project structure
 ```
 .
 ├── app/
@@ -71,7 +72,7 @@ Inference:
 
 ```
 
-# Running the project
+## Running the project
 1. Install dependencies
 ```
 pip install -r requirements.txt
@@ -86,7 +87,7 @@ python main.py
 ```
 The API exposes a simple endpoint to submit medical queries and retrieve the most relevant answer.
 
-# Future improvements
+## Future improvements
 This project focuses on the core logic of semantic retrieval. Based on this implementation, several clear extension paths emerge:
 - Scalability: For larger datasets, in-memory similarity search becomes inefficient. Integrating a vector database (e.g. FAISS) would enable scalable and faster retrieval.
 - Negative Mining: Negatives are currently sampled at random. Incorporating hard negative mining (semantically similar but incorrect answers) would improve embedding discrimination and retrieval precision.
